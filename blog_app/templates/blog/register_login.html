@@ -1,0 +1,35 @@
+
+
+        {% extends "blog/base.html" %}
+
+        {% block content %}
+
+
+<div class="row">
+    <div class="content-section col-md-4 mr-5">
+        <h1>Register</h1>
+        <form action="/register_process" method="post">
+            {% csrf_token %}
+            <label>First Name</label>
+            <input type="text" name="first_name" class="form-control">
+            <label>Last Name</label>
+            <input type="text" name="last_name" class="form-control">
+            <label>Email</label>
+            <input type="text" name="email" class="form-control">
+            <label>Password</label>
+            <input type="password" name="password" autocomplete="new-password" class="form-control">
+            <label>Confirm Password</label>
+            <input type="password" name="confpassword" class="form-control">
+            
+            <input type="submit" value="submit">
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Already Have An Account? <a class="ml-2" href="/go_login">Sign In</a>
+                </small>
+            </div>
+        </form>
+    </div>
+</div>
+
+    {% endblock %}
+

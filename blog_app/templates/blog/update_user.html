@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %} 
+{% block content %}
+<div class="content-section">
+
+        <div class="media-body">
+            <h2 class="account-heading">Update {{ one_user.first_name }}'s Profile Picture</h2>
+        </div>
+        <div class="row-md-4 ml-5">
+            <form action="/update_user_process/{{ one_user.id }}" method="post">
+                {% csrf_token %}
+                <label>Add an Image URL</label>
+                <input type="text" name="image" value="{{one_user.image}}" />
+                <input type="submit" value="Submit">
+                <img class="rounded-circle account-img" src="{{ one_user.image }}"/>
+            </form>
+
+
+        </div>
+
+</div>
+{% endblock content %}

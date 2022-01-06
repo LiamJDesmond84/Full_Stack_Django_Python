@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %} {% block content %}
+<div class="content-section bg-dark m-0">
+    <a class="nav-item" href="/update_user/{{one_user.id}}">Update User Image</a>
+    <div class="media">
+        <img
+            class="rounded-circle account-img"
+            src="{{ one_user.image }}"
+        />
+        <div class="media-body">
+            <h2 class="account-heading text-success">{{ one_user.first_name }} {{ one_user.last_name }}</h2>
+            <p class="text-secondary text-info">{{ one_user.email }}</p>
+        </div>
+        
+    </div>
+    <div>
+        <h3 class="text-success">{{ one_user.first_name }}' Posts</h3>
+
+        {% for x in users_posts %}
+        <hr/>
+        <p class="text-muted"><a class="article-title text-danger" href="/view_post/{{ x.id }}">{{ x.title }}</a> - {{x.date_posted | date:"F d, Y"}}</p>
+        <p class="text-light">{{x.content}}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

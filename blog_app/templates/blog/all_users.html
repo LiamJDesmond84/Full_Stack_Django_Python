@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+
+    <article class="media content-section bg-dark m-0">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h1 class="mr-2 text-success">All Users</h1>
+                <small class="text-muted">{{ x.date_posted | date:"F d, Y" }}</small>
+            </div>
+            {% for x in all_users %}
+            <h3><a href="profile/{{x.id}}">{{x.first_name}} {{x.last_name}}</a></h3>
+            <img class="rounded-circle account-img" src="{{x.image}}"/>
+            <hr class="bg-light"/>
+            {% endfor %}
+        </div>
+    </article>
+    <br/>
+
+
+{% endblock content %}

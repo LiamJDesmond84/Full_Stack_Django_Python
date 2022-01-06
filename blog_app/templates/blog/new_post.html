@@ -1,0 +1,15 @@
+
+{% extends "blog/base.html" %} 
+{% block content %}
+    <div class="content-section col-md-5 ml-5">
+        <h1>Create a Post</h1>
+    <form class="col-md-5 w-100 p-3" action="/new_post_process/" method="post">
+        {% csrf_token %}
+        <label>Title</label>
+        <input type="text" name="title">
+        <label>Add Your Post!</label>
+        <textarea cols=25 rows=5 type="text" name="content"></textarea>
+        <input type="submit" value="submit">
+    </form>
+    </div>
+{% endblock content %}

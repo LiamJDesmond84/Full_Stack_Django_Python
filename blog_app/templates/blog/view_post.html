@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %} 
+{% block content %}
+<div class="content-section bg-dark m-0">
+    <div class="media">
+        <div class="media-body">
+            <h2 class="account-heading text-success">{{ one_post.title }} - {{one_post.date_posted | date:"F d, Y"}}</h2>
+            <p class="text-secondary">Posted by: <a class="mr-2" href="/profile/{{ posts_user.user.id }}">{{ posts_user.user.first_name }} {{ posts_user.user.last_name }}</a></p>
+        </div>
+        
+    </div>
+    <div>
+        <hr class="bg-light"/>
+        <p class="article-content text-light">{{one_post.content}}</p>
+    </div>
+</div>
+{% endblock content %}
