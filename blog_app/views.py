@@ -77,10 +77,12 @@ def oops(request):
 def profile(request, id):
     if "userid" not in request.session:
         return redirect("/oops")
+
     user_id = id
     context = {
             "one_user": User.objects.get(id=user_id),
-            "users_posts": User.objects.get(id=user_id).posts.all()
+            "users_posts": User.objects.get(id=user_id).posts.all(),
+            "logged_user": request.session['userid']
             }
     print(context)
     return render(request, "blog/profile.html", context)
@@ -92,7 +94,8 @@ def view_post(request, id):
 
     context = {
             "one_post": Post.objects.get(id=post_id),
-            "posts_user": Post.objects.get(id=post_id)
+            "posts_user": Post.objects.get(id=post_id),
+            "logged_user": request.session['userid']
             }
     return render(request, "blog/view_post.html", context)
 
@@ -124,6 +127,21 @@ def update_user_process(request, id):
     update_user.image = image
     update_user.save()
     return redirect(f"/profile/{user_id}")
+
+def update_post(request, id):
+    post_id = id
+    context= {"one_post": Post.objects.get(id=post_id)}
+    return render(request, "blog/update_post.html", context)
+
+def update_post_process(request, id):
+    post_id = id
+    title = request.POST["title"]
+    content = request.POST["content"]
+    post = Post.objects.get(id=post_id)
+    post.title = title
+    post.content = content
+    post.save()
+    return redirect(f"/view_post/{post_id}")
 
 def all_users(request):
     context = {"all_users": User.objects.all()}

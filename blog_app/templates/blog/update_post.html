@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %} 
+{% block content %}
+<div class="content-section">
+
+        <div class="media-body">
+            <h2 class="account-heading">Update {{ one_post.title }}</h2>
+        </div>
+        <div class="row-md-4 ml-5">
+            <form action="/update_post_process/{{ one_post.id }}" method="post">
+                {% csrf_token %}
+                <label>Add an Image URL</label>
+                <input type="text" name="title" value="{{one_post.title}}" />
+                <textarea cols=30 rows=5 type="text" name="content" value="{{ one_post.content }}">{{ one_post.content }}</textarea>
+                <input type="submit" value="Submit">
+
+            </form>
+
+        </div>
+
+</div>
+{% endblock content %}

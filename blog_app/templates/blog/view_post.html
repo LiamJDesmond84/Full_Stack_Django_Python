@@ -5,6 +5,9 @@
         <div class="media-body">
             <h2 class="account-heading text-success">{{ one_post.title }} - {{one_post.date_posted | date:"F d, Y"}}</h2>
             <p class="text-secondary">Posted by: <a class="mr-2" href="/profile/{{ posts_user.user.id }}">{{ posts_user.user.first_name }} {{ posts_user.user.last_name }}</a></p>
+            {% if logged_user == posts_user.user.id %}
+            <a class="nav-item" href="/update_post/{{one_post.id}}">Update Post</a>
+            {% endif %}
         </div>
         
     </div>

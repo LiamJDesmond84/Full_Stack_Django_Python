@@ -16,6 +16,8 @@ urlpatterns = [
     path("new_post_process/", views.new_post_process),
     path("update_user/<int:id>", views.update_user),
     path("update_user_process/<int:id>", views.update_user_process),
+    path("update_post/<int:id>", views.update_post, name="update_post"),
+    path("update_post_process/<int:id>", views.update_post_process),
     path("all_users", views.all_users, name="all-users"),
     path("oops", views.oops, name="oops"),
 ]

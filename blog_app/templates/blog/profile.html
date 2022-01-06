@@ -1,6 +1,8 @@
 {% extends "blog/base.html" %} {% block content %}
 <div class="content-section bg-dark m-0">
+    {% if logged_user == one_user.id %}
     <a class="nav-item" href="/update_user/{{one_user.id}}">Update User Image</a>
+    {% endif %}
     <div class="media">
         <img
             class="rounded-circle account-img"
